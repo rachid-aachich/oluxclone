@@ -1,0 +1,108 @@
+<ul class="nav nav-tabs">
+	<li class="nav-item">
+		<a class="nav-link active"  href="#tickettable" data-toggle="tab">My Tickets</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="#open" data-toggle="tab"><i class="fas fa-pen"></i> New Ticket</a>
+	</li>
+</ul>
+
+<div id="myTabContent" class="tab-content">
+	<div class="tab-pane fade active show" id="tickettable">
+		<table width="100%"  class="table  table-bordered table-hover table-sm" id="table">
+			<thead>
+		        <tr>
+		          <th scope="col" ></th>
+		          <th scope="col" >ID</th>     
+		          <th scope="col" >Date Created</th>
+		          <th scope="col" >Title</th>      
+		          <th scope="col" >Status</th>
+		          <th scope="col" >Last Reply</th>
+		          <th scope="col" >Last Updated</th>
+		        </tr>				
+			</thead>
+			<tbody>
+		    {items}		
+			</tbody>
+		</table>
+	</div>
+	<div class="tab-pane fade" id="open">
+		<div class="container-fluid ">
+			<br>
+			<h3>Support Tickets</h3>
+			<div class="row ">
+				<div class="col-sm">
+					<form id="Addticket">
+						<div class="form-group">
+							<label for="title">Title</label>
+														<input type="text" name="title" class="form-control input-normal" required/>
+						</div>
+						<div class="form-group">
+							<label for="ticketdata">Message</label>
+							<textarea name="ticketdata"  rows="8" cols="80" class="form-control input-normal" ></textarea>
+						</div>
+						<button type='submit' form="Addticket" class='btn btn-primary btn-lg'>Submit  <i class="fas fa-pen-nib"></i></button>
+					</form>
+				</div>
+				<div class="col-sm">
+					<br>
+					<div class="alert alert-light" >
+			          <ul>
+			            <li>If you want to refund an order :
+			            	<ul>
+			            		<li>Go to  <abbr title="Account - > My Orders or Click here" onclick="pageDiv(13,'Orders - OluxShop','orders.html',0); return false;">My Account -> My Orders  <i class="fas fa-shopping-cart"></i></abbr></li>
+			            		<li>Choose the order you want to refund</li>
+			            		<li>Then click on refund button </li>
+			            	</ul>
+			            </li>
+			            <li>Please avoid opening multiple tickets, Just open one and include all the info you want in it</li>
+			          </ul>					
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script type="text/javascript">
+
+  if(window.location.hash != "") {
+      $('a[href="' + window.location.hash + '"]').click()
+  }
+function CheckColors(val){
+ var element=document.getElementById('Other');
+ if(val=='others')
+   element.style.display='block';
+ else  
+   element.style.display='none';
+}
+
+$("#Addticket").submit(function() {
+
+  $('button').prop('disabled', true);
+
+    $.ajax({
+           type: "POST",
+           url: 'addTicket.html',
+           data: $("#Addticket").serialize(), // serializes the form's elements.
+           success: function(data)
+           {
+            if (data == 01) {
+              alert('Please enter a valid subject'); 
+             }
+             if (data == 02) {
+               alert('Please enter a valid message'); 
+             }
+             if (data == 03) {
+               alert('You have exceeded the maximum number of opened tickets , please close some tickets or wait for our reply for them'); 
+             }             
+             if (data != 01 && data != 02 && data != 03) {
+              pageDiv('ticket'+data,'Ticket #'+ data +' - Olux SHOP','showTicket'+ data +'.html',0);
+
+             }
+             else {$('button').prop('disabled', false);}
+           }
+         });
+
+    return false; // avoid to execute the actual submit of the form.
+});
+</script>

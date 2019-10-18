@@ -17,6 +17,8 @@ class Template {
   private $use_extension = FALSE;
   private $extension = 'html';
   private $views_path = 'application/views/';
+  private $header_template = 'header';
+  private $footer_template = 'footer';
   
   public function __construct()
   {
@@ -91,6 +93,15 @@ class Template {
     $this->var_holder[$var] = $value;
   }
   
+  public function assignObject($object, $exclude = array())
+  {
+    foreach($object as $key => $value)
+    {
+      if( !in_array($key, $exclude) )
+        $this->assign($key, $value);
+    }
+  }
+  
   public function replace($str , $pattern)
   {
     $this->rep_holder[$str] = $pattern;
@@ -106,5 +117,21 @@ class Template {
     $full_file_path = $template;
     return $this->fill($full_file_path);
   }
+  
+  public function getBaseUrl()
+  {
+    return $this->base_url;
+  }
+  
+  public function displayHeader()
+  {
+    $this->display($this->header_template);
+  }
+  
+  public function displayFooter()
+  {
+    $this->display($this->footer_template);
+  }
+ 
 }
 # END OF CLASS: Template.php

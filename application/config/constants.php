@@ -83,3 +83,11 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+
+/* USER ROLES */
+
+defined('ADMIN_ROLE')   OR define('ADMIN_ROLE', 1);
+defined('SUPPORT_ROLE') OR define('SUPPORT_ROLE', 2);
+defined('SELLER_ROLE')  OR define('SELLER_ROLE', 3);
+defined('BUYER_ROLE')   OR define('BUYER_ROLE', 4);

@@ -1,0 +1,63 @@
+
+
+<div class="alert alert-light" >
+	<center>
+		<h4><i class="fas fa-shopping-cart"></i> Your Orders</h4>
+		<p >You can only report a bad tool within <b>12 hours</b> by clicking on <span  class="badge badge-primary">Report #ID</span > , Otherwise we can't give you refund or replacement!</p>
+		<form id="filter" class="col-lg-5">
+			<div class="input-group mb-3">
+				<input type="text" name="search" id="search" class="form-control">
+				<div class="input-group-append">
+					<button type="submit" form="filter" class="btn btn-outline-primary btn">Search <i class="fas fa-search"></i></button>
+				</div>			
+			</div>
+		</form>
+	</center>
+</div>
+<table width="100%"  class="table table-bordered table-hover table-sm" id="table">
+	<thead>
+	    <tr>
+	      <th scope="col">ID</th>
+	      <th scope="col">Type</th>
+	      <th scope="col">Item</th>
+	      <th scope="col">Open (View)</th>
+	      <th scope="col">Price</th>
+	      <th scope="col">Seller</th>
+
+	      <th scope="col">Report</th>
+	      <th scope="col">Date</th>
+	    </tr>
+	</thead>
+	<tbody>
+			</tbody>
+
+
+
+
+<script type="text/javascript">
+	 $("#filter").on("submit", function(){
+        $("#table tbody tr").each(function() {
+            var ck3 = $(this).text().toLowerCase();            
+            var val3 = $('input[name="search"]').val().toLowerCase();
+             if(ck3.indexOf(val3)==-1)
+                 $(this).hide();
+            else
+                 $(this).show();                
+        });
+        return false;
+	 });
+function reportitem(order,code){
+	$("#myModalLabel").text('Report Order #'+order);
+	$("#modelbody").html('');
+	$('#myModal').modal('show');
+	$.ajax({
+		type:       'GET',
+		url:        'OrderReport'+order+'-'+code+'.html',
+		success:    function(data)
+		{
+			$("#modelbody").html(data);
+		}
+	});
+
+}
+</script>
