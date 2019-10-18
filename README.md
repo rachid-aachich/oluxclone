@@ -15,7 +15,7 @@ That's a web app similar to https://olux.io/
 
 
 <h3>Contact</h3>
-If there's any question or anything contact me via email
-	```r.aachich@gmail.com```
+If there's any question or anything contact me via email:
+	<b>r.aachich@gmail.com</b>
 or Whatsapp/Tel: 
-	```+212 6 35 15 91 68```
+	<b>+212 6 35 15 91 68</b>
