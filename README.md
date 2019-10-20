@@ -7,6 +7,7 @@ That's a web app similar to https://olux.io/
 <h3>To start working on the project:</h3>
 
 - Clone the repository.
+- Import the database file database.sql
 - Create a new branch with your name and prefixed with "dev", for example:<br>
 	```git checkout -b dev/aachichrachid```
 - And start hacking.
