@@ -11,19 +11,19 @@ Class Account extends CI_Controller {
     $this->template->displayHeader();
   }
   
-  public function Settings()
+  public function settings()
   {
     $this->template->display('account/settings');
     $this->template->displayFooter();
   }
   
-  public function Orders()
+  public function orders()
   {
     $this->template->display('account/orders');
     $this->template->displayFooter();
   }
   
-  public function Balance()
+  public function balance()
   {
     $this->template->display('account/balance');
     $this->template->displayFooter();

@@ -10,13 +10,13 @@ Class Support extends CI_Controller {
     $this->template->displayHeader();
   }
   
-  public function Tickets()
+  public function tickets()
   {
     $this->template->display('support/tickets');
     $this->template->displayFooter();
   }
   
-  public function Reports()
+  public function reports()
   {
     $this->template->display('support/reports');
     $this->template->displayFooter();

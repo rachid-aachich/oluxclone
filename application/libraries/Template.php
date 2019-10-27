@@ -13,7 +13,7 @@ class Template {
 
   private $var_holder = array();
   private $rep_holder = array();
-  private $base_url = 'http://localhost/olux';
+  private $base_url = 'http://localhost/oluxclone';
   private $use_extension = FALSE;
   private $extension = 'html';
   private $views_path = 'application/views/';
