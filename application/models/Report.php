@@ -36,8 +36,35 @@ Class Report extends CI_Model {
     return $query->result();
   }
   
-  public function add()
+  public function add($order_id,$title,$message)
   {
+    $data = array(
+      'date_created' => date('Y-m-d h:i:s'),
+      'order_id' => $order_id,
+      'status' => 'submitted',
+      'last_reply' => null,
+      'last_updated' => date('Y-m-d h:i:s'),
+      'user_id'=>1
+    );
+    $this->db->insert($this->table_name, $data);
+    $report_id  = $this->db->insert_id();
+
+    $data = array(
+      'entity_id' => $report_id,
+      'entity_type' => 'reports',
+      'title' => $title,
+      'message' => $message,
+      'user_id' => 1
+    );
+    $this->db->insert('messages', $data);
+    $message_id = $this->db->insert_id();
+
+
+    $data = array(
+      'last_reply' => $message_id,
+    );
+    $this->db->where('id', $report_id);
+    $this->db->update($this->table_name, $data);
     
   }
   

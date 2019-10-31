@@ -45,9 +45,8 @@ Class Support extends CI_Controller {
       exit;
     }
 
-    $response = "";
     if($_POST["operation"] == "add_ticket") $response = $this->ticket->add($_POST["title"],$_POST["message"]);
-    else if($_POST["operation"] == "add_report") $this->report->add($_POST["title"],$_POST["message"]);
+    else if($_POST["operation"] == "add_report") $this->report->add($_POST['order_id'],$_POST["title"],$_POST["message"]);
        
     header('Content-type: application/json');
     echo json_encode(["response_type"=>"success"]);
