@@ -18,6 +18,7 @@ create table messages(
     title varchar(50),
     message text,
     user_id int,
+    date_created datetime,
     FOREIGN key (user_id) REFERENCES user(id)
     );
 ---  Tickets
