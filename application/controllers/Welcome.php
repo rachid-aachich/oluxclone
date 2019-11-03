@@ -22,8 +22,8 @@ class Welcome extends CI_Controller {
 	{
 		$this->template->displayHeader();
     
-    $this->template->display('home');
+    	$this->template->display('home');
     
-    $this->template->displayFooter();
+    	$this->template->displayFooter();
 	}
 }
